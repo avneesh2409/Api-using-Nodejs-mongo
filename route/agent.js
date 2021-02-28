@@ -24,6 +24,8 @@ router.post('/',(req,res)=>{
     
 });
 router.get('/',async (req,res)=>{
+    var server = global._io.getServer();
+    server.emit("message","Notification sent!!")
     let agents =  await db.agent.find({});
     res.json({
         status:"success",
